@@ -1,0 +1,565 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f7f8fc;
+    color: #20263a;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 250px;
+    background: #ffffff;
+    border-right: 1px solid #e8eaf0;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+}
+
+.brand {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.brand-icon {
+    background: #5b5ce2;
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.brand h2 {
+    font-size: 17px;
+}
+
+.brand small {
+    color: #999;
+    font-size: 9px;
+}
+
+.menu-label {
+    color: #999;
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+nav {
+    display: grid;
+    gap: 8px;
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    padding: 14px;
+    text-align: left;
+    border-radius: 9px;
+    color: #697386;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: #eeeeff;
+    color: #5b5ce2;
+}
+
+.network {
+    margin-top: auto;
+    padding: 12px;
+    background: #f5f6fa;
+    border-radius: 8px;
+    font-size: 11px;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #20b981;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+/* MAIN */
+
+.main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+}
+
+.topbar {
+    background: white;
+    height: 85px;
+    padding: 0 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e8eaf0;
+}
+
+.topbar small {
+    color: #999;
+    font-size: 10px;
+}
+
+.topbar h2 {
+    font-size: 19px;
+    margin-top: 5px;
+}
+
+.wallet-area {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-size: 12px;
+}
+
+/* BUTTONS */
+
+.primary-btn {
+    background: #5b5ce2;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.primary-btn:hover {
+    background: #4748c7;
+}
+
+.primary-btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.text-btn {
+    border: none;
+    background: transparent;
+    color: #5b5ce2;
+    cursor: pointer;
+}
+
+/* PAGE */
+
+.page {
+    display: none;
+    padding: 35px;
+}
+
+.page.active {
+    display: block;
+}
+
+.welcome {
+    margin-bottom: 30px;
+}
+
+.welcome h1 {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.welcome p,
+.section-heading p,
+.page > p {
+    color: #999;
+    font-size: 12px;
+}
+
+/* STATISTICS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.stat-card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid #eceef3;
+}
+
+.stat-card p {
+    color: #8992a3;
+    font-size: 12px;
+}
+
+.stat-card h2 {
+    font-size: 25px;
+    margin-top: 15px;
+}
+
+/* TABLE */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.section-heading h2 {
+    font-size: 17px;
+}
+
+.table-container {
+    background: white;
+    border: 1px solid #eceef3;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+th {
+    background: #fafbfe;
+    padding: 15px;
+    text-align: left;
+    font-size: 10px;
+    color: #929aaa;
+}
+
+td {
+    padding: 16px 15px;
+    border-top: 1px solid #f0f1f5;
+    font-size: 11px;
+}
+
+tr:hover {
+    background: #fafaff;
+}
+
+.action-link {
+    border: none;
+    color: #5b5ce2;
+    background: transparent;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* STATUS */
+
+.status {
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.Created {
+    background: #f0f1f5;
+    color: #687386;
+}
+
+.Funded {
+    background: #eaf1ff;
+    color: #4779d5;
+}
+
+.Submitted {
+    background: #f1eaff;
+    color: #8855ce;
+}
+
+.Disputed {
+    background: #fff0e5;
+    color: #d47b35;
+}
+
+.Completed {
+    background: #e7f8ef;
+    color: #219a69;
+}
+
+.Refunded {
+    background: #fff0f1;
+    color: #d15b68;
+}
+
+/* FORM */
+
+.form-container {
+    max-width: 650px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #eceef3;
+}
+
+.form-container h1 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.form-container p {
+    color: #999;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+form {
+    display: grid;
+    gap: 12px;
+}
+
+label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+input,
+textarea {
+    width: 100%;
+    border: 1px solid #e0e3eb;
+    border-radius: 8px;
+    padding: 12px;
+    outline: none;
+    font-size: 12px;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #5b5ce2;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.full-btn {
+    margin-top: 15px;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0007;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 550px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    border: none;
+    background: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+#detailContent {
+    margin-top: 20px;
+    line-height: 2;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.actions {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.actions button {
+    width: 100%;
+}
+
+.detail-row {
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+}
+
+.detail-row strong {
+    display: block;
+}
+
+.transaction-history {
+    margin-top: 24px;
+}
+
+.transaction-history h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.transaction-history > p {
+    color: #8992a3;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+.transaction-row {
+    display: grid;
+    gap: 6px;
+    padding: 12px 0;
+    border-top: 1px solid #eceef3;
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+.transaction-status {
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: #f0f1f5;
+    color: #687386;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.transaction-status.confirmed {
+    background: #e7f8ef;
+    color: #219a69;
+}
+
+.transaction-status.failed {
+    background: #fff0f1;
+    color: #d15b68;
+}
+
+.transaction-row a {
+    color: #5b5ce2;
+}
+
+.secondary-btn {
+    background: #f0f1f5;
+    color: #333;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.danger-btn {
+    background: #fff0e5;
+    color: #c56b32;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* NOTIFICATION */
+
+#notification {
+    position: fixed;
+    top: 100px;
+    right: 25px;
+    z-index: 200;
+    max-width: 400px;
+}
+
+.toast {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 9px;
+    box-shadow: 0 5px 25px #0002;
+    margin-bottom: 10px;
+    font-size: 12px;
+    border-left: 4px solid #5b5ce2;
+}
+
+.toast.error {
+    border-left-color: #e05252;
+}
+
+.toast.success {
+    border-left-color: #20b981;
+}
+
+@media(max-width: 1000px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 650px) {
+    .sidebar {
+        width: 180px;
+        padding: 15px 10px;
+    }
+
+    .main {
+        margin-left: 180px;
+        width: calc(100% - 180px);
+    }
+
+    .page {
+        padding: 18px 12px;
+    }
+
+    .topbar {
+        padding: 0 12px;
+    }
+
+    .wallet-area {
+        gap: 5px;
+    }
+
+    .wallet-area span {
+        display: none;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .brand h2 {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalWork | Freelance Escrow</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.5/ethers.umd.min.js"></script>
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">D</div>
+            <div>
+                <h2>DigitalWork</h2>
+                <small>FREELANCE ESCROW</small>
+            </div>
+        </div>
+
+        <p class="menu-label">MENU</p>
+
+        <nav>
+            <button class="nav-btn active" data-page="dashboard">▦ Dashboard</button>
+            <button class="nav-btn" data-page="projects">▤ Agreements</button>
+            <button class="nav-btn" data-page="create">＋ Create Project</button>
+            <button class="nav-btn" data-page="admin">⚖ Admin Panel</button>
+        </nav>
+
+        <div class="network">
+            <span class="dot"></span>
+            Ethereum Sepolia
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <small>WORKSPACE</small>
+                <h2 id="pageTitle">Dashboard</h2>
+            </div>
+
+            <div class="wallet-area">
+                <span id="walletAddress">Not Connected</span>
+                <button id="connectWallet" class="primary-btn">
+                    Connect Wallet
+                </button>
+            </div>
+        </header>
+
+        <div id="notification"></div>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page active">
+
+            <div class="welcome">
+                <h1>Welcome to DigitalWork 👋</h1>
+                <p>Manage freelance projects and secure payments with blockchain.</p>
+            </div>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <p>Total Agreements</p>
+                    <h2 id="totalAgreements">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Active (latest 100)</p>
+                    <h2 id="activeProjects">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Completed (latest 100)</p>
+                    <h2 id="completedProjects">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Escrow Balance</p>
+                    <h2 id="escrowBalance">0 ETH</h2>
+                </div>
+
+            </div>
+
+            <div class="section-heading">
+                <h2>Recent Agreements</h2>
+                <button class="text-btn" onclick="showPage('projects')">
+                    View All →
+                </button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>PROJECT</th>
+                            <th>AMOUNT</th>
+                            <th>DEADLINE</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentTable">
+                        <tr>
+                            <td colspan="6">Connect wallet to load data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- AGREEMENTS -->
+        <section id="projects" class="page">
+
+            <div class="section-heading">
+                <div>
+                    <h1>Latest Agreements</h1>
+                    <p>Showing up to the 100 most recent freelance agreements.</p>
+                </div>
+                <button class="primary-btn" onclick="showPage('create')">
+                    + Create Agreement
+                </button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>PROJECT</th>
+                            <th>EMPLOYER</th>
+                            <th>FREELANCER</th>
+                            <th>AMOUNT</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agreementTable">
+                        <tr>
+                            <td colspan="7">No agreements found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- CREATE AGREEMENT -->
+        <section id="create" class="page">
+
+            <div class="form-container">
+
+                <h1>Create Agreement</h1>
+                <p>Create a new freelance project.</p>
+
+                <form id="createForm">
+
+                    <label>Project Name</label>
+                    <input
+                        id="projectName"
+                        type="text"
+                        placeholder="Website Development"
+                        required
+                    >
+
+                    <label>Description</label>
+                    <textarea
+                        id="description"
+                        placeholder="Describe project details..."
+                    ></textarea>
+
+                    <label>Freelancer Wallet Address</label>
+                    <input
+                        id="freelancer"
+                        type="text"
+                        placeholder="0x..."
+                        required
+                    >
+
+                    <label>Payment Amount (ETH)</label>
+                    <input
+                        id="amount"
+                        type="number"
+                        min="0.000000000000000001"
+                        step="any"
+                        placeholder="0.01"
+                        required
+                    >
+
+                    <label>Deadline</label>
+                    <input
+                        id="deadline"
+                        type="datetime-local"
+                        required
+                    >
+
+                    <button type="submit" class="primary-btn full-btn">
+                        Create Agreement
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- ADMIN -->
+        <section id="admin" class="page">
+
+            <h1>Admin Panel</h1>
+            <p>Resolve disputes from the 100 most recent agreements.</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>PROJECT</th>
+                            <th>AMOUNT</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTable">
+                        <tr>
+                            <td colspan="5">No disputes found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- AGREEMENT DETAIL MODAL -->
+        <div id="detailModal" class="modal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeModal()">×</button>
+                <h2 id="detailTitle">Agreement Details</h2>
+                <div id="detailContent"></div>
+                <div id="detailActions" class="actions"></div>
+                <section class="transaction-history">
+                    <h3>Transaction History</h3>
+                    <p>Transactions submitted in this browser; hashes link to Sepolia Etherscan.</p>
+                    <div id="transactionHistory"></div>
+                </section>
+            </div>
+        </div>
+
+    </main>
+
+</div>
+<footer align="center">
+     <p>
+        👥 กลุ่ม: DoubleFatZ
+• 66026188 ศิวัฒน์ แก้วหนองสังข์
+• 66084733 ธนวัฒน์ ณรงค์วงศ์วัฒนา
+    </p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
